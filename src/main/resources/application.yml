@@ -12,5 +12,11 @@ logging:
   file:
     #path:
     name: D:\\log\\log.log
-  level:
-    root: error
+  #level:
+    #root: error
+
+hcws:
+  name: 1
+  password: 1
+  ip: 1
+  port: 1
