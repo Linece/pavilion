@@ -17,7 +17,7 @@ public class WeatherUtil {
        String content = null;
        try {
            //拼地址
-           String apiUrl = "http://www.weather.com.cn/data/sk/101100906.html";
+           String apiUrl = "http://t.weather.itboy.net/api/weather/city/101100906";
            // 定义HttpClient
            HttpClient client = new DefaultHttpClient();
            // 实例化HTTP方法
