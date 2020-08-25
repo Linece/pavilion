@@ -12,7 +12,7 @@ li {
   width: 860px;
   height: 1032px;
   margin: 0 auto;
-  background-image: url(./images/bg1.png);
+  background-image: url(./images/bg3.png);
   background-repeat: no-repeat;
 }
 .banner {
@@ -84,15 +84,16 @@ li {
   -webkit-transform: rotate(7deg); /* Safari 和 Chrome */
   -o-transform: rotate(7deg); /* Opera */
 }
+
 .mess {
-  font-size: 15px;
+  font-size: 14px;
   padding: 15px 2px 20px 25px;
   /* Rotate div */
-  transform: rotate(2deg);
-  -ms-transform: rotate(2deg); /* Internet Explorer */
-  -moz-transform: rotate(2deg); /* Firefox */
-  -webkit-transform: rotate(2deg); /* Safari 和 Chrome */
-  -o-transform: rotate(2deg); /* Opera */
+  transform: perspective(20px)  rotateY(1deg);
+  -ms-transform: perspective(20px)  rotateY(1deg); /* Internet Explorer */
+  -moz-transform: perspective(20px)  rotateY(1deg); /* Firefox */
+  -webkit-transform:perspective(20px)  rotateY(1deg);/* Safari 和 Chrome */
+  -o-transform: perspective(20px)  rotateY(1deg); /* Opera */
 }
 .circleP {
   width: 5px;
@@ -175,7 +176,7 @@ li {
   margin-top: 13px;
 }
 .status1 {
-  margin-top: 30px;
+  margin-top: 27px;
   /* Rotate div */
   transform: rotate(2deg);
   -ms-transform: rotate(2deg); /* Internet Explorer */
