@@ -5,9 +5,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hikvision.artemis.sdk.ArtemisHttpUtil;
 import com.hikvision.artemis.sdk.config.ArtemisConfig;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.ObjectUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -159,4 +162,70 @@ public class HcOpenApi {
 
         return builder.substring(0, builder.lastIndexOf(",")).toString();
     }
+
+  public static void main(String[] args) {
+	  StringBuilder builder =
+        new StringBuilder("{\n" + "  \"code\": \"0\",\n" + "  \"data\": {\n" + "    \"list\": [");
+        for (int i = 0;i<10;i++){
+            int flowInNum = RandomUtils.nextInt(1, 100);
+            int flowOutNum = RandomUtils.nextInt(1, 100);
+            if(i==9){
+                builder.append(
+                        "{\n"
+                                + "        \"createTime\": 1520111111,\n"
+                                + "        \"flowInNum\": "+flowInNum+",\n"
+                                + "        \"flowOutNum\": "+flowOutNum+",\n"
+                                + "        \"groupId\": \"rrrr1111\",\n"
+                                + "        \"groupName\": \"test\",\n"
+                                + "        \"holdValue\": 5.0,\n"
+                                + "        \"statTime\": \"2019-01-01T00:00:00+08:00\",\n"
+                                + "        \"updateTime\": 1520111111\n"
+                                + "      }");
+            }else {
+                builder.append("{\n"
+                        + "        \"createTime\": 1520111111,\n"
+                        + "        \"flowInNum\": "+flowInNum+",\n"
+                        + "        \"flowOutNum\": "+flowOutNum+",\n"
+                        + "        \"groupId\": \"rrrr1111\",\n"
+                        + "        \"groupName\": \"test\",\n"
+                        + "        \"holdValue\": 5.0,\n"
+                        + "        \"statTime\": \"2019-01-01T00:00:00+08:00\",\n"
+                        + "        \"updateTime\": 1520111111\n"
+                        + "      },");
+            }
+
+        }
+        builder.append("],\n" +
+                "    \"total\": 10\n" +
+                "  },\n" +
+                "  \"msg\": \"success\"\n" +
+                "}");
+        int flowInNum = 0;
+        int flowOutNum = 0;
+        int holdValue = 0;
+	    StringBuilder  groupId = new StringBuilder();
+	  Object jsonObj = JSONObject.parseObject(JSONObject.parseObject(builder.toString()).get("data").toString()).get("list");
+	  if(!ObjectUtils.isEmpty(jsonObj)){
+		  JSONArray array = JSONArray.parseArray(jsonObj.toString());
+		  for(int k=0;k<array.size();k++){
+			  flowInNum += Integer.valueOf(JSONObject.parseObject(array.get(k).toString()).get("flowInNum").toString());
+			  flowOutNum += Integer.valueOf(JSONObject.parseObject(array.get(k).toString()).get("flowOutNum").toString());
+			  holdValue += Double.valueOf(JSONObject.parseObject(array.get(k).toString()).get("holdValue").toString());
+			  groupId.append(JSONObject.parseObject(array.get(k).toString()).get("groupId").toString()+",");
+		  }
+	  }
+	  String result =
+			  "{\n"
+					  + "\t\"code\": \"0\",\n"
+					  + "\t\"data\": {\n"
+					  + "\t\t\"flowInNum\": "+flowInNum+",\n"
+					  + "\t\t\"flowOutNum\": "+flowOutNum+",\n"
+					  + "\t\t\"groupId\": \""+groupId.toString()+"\",\n"
+					  + "\t\t\"holdValue\": "+holdValue+"\n"
+					  + "\t},\n"
+					  + "\t\"msg\": \"success\"\n"
+					  + "}";
+System.out.println(result);
+
+  }
 }
