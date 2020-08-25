@@ -41,6 +41,14 @@ public class PavilionController extends BaseController {
     @Value("${openApi.cameraIndexCode}")
     private String cameraIndexCode;
 
+    static int flowInNum = 0;
+    static int flowOutNum = 0;
+    static int holdValue = 0;
+
+    /**
+     * 天气接口
+     * @return
+     */
     @GetMapping("/getWeather")
     public ResponseData getWeather(){
         Map map = null;
@@ -89,47 +97,73 @@ public class PavilionController extends BaseController {
      * @return
      */
     @GetMapping("/passengerFlowgroups/{type}")
-    public ResponseData passengerFlowgroups(@PathVariable("type") String type){
+    public JSONObject passengerFlowgroups(@PathVariable("type") String type){
     // return success(HcOpenApi.byStartAndEnd(host,appKey,appSecret,groupsUrl,countGroupUrl));
 
-    StringBuilder builder =
-        new StringBuilder("{\n" + "  \"code\": \"0\",\n" + "  \"data\": {\n" + "    \"list\": [");
-        for (int i = 0;i<10;i++){
-            int flowInNum = RandomUtils.nextInt(1, 100);
-            int flowOutNum = RandomUtils.nextInt(1, 100);
-            if(i==9){
-                builder.append(
-                        "{\n"
-                                + "        \"createTime\": 1520111111,\n"
-                                + "        \"flowInNum\": "+flowInNum+",\n"
-                                + "        \"flowOutNum\": "+flowOutNum+",\n"
-                                + "        \"groupId\": \"rrrr1111\",\n"
-                                + "        \"groupName\": \"test\",\n"
-                                + "        \"holdValue\": 5.0,\n"
-                                + "        \"statTime\": \"2019-01-01T00:00:00+08:00\",\n"
-                                + "        \"updateTime\": 1520111111\n"
-                                + "      }");
-            }else {
-                builder.append("{\n"
-                        + "        \"createTime\": 1520111111,\n"
-                        + "        \"flowInNum\": "+flowInNum+",\n"
-                        + "        \"flowOutNum\": "+flowOutNum+",\n"
-                        + "        \"groupId\": \"rrrr1111\",\n"
-                        + "        \"groupName\": \"test\",\n"
-                        + "        \"holdValue\": 5.0,\n"
-                        + "        \"statTime\": \"2019-01-01T00:00:00+08:00\",\n"
-                        + "        \"updateTime\": 1520111111\n"
-                        + "      },");
-            }
+//    StringBuilder builder =
+//        new StringBuilder("{\n" + "  \"code\": \"0\",\n" + "  \"data\": {\n" + "    \"list\": [");
+//        for (int i = 0;i<10;i++){
+//            int flowInNum = RandomUtils.nextInt(1, 100);
+//            int flowOutNum = RandomUtils.nextInt(1, 100);
+//            if(i==9){
+//                builder.append(
+//                        "{\n"
+//                                + "        \"createTime\": 1520111111,\n"
+//                                + "        \"flowInNum\": "+flowInNum+",\n"
+//                                + "        \"flowOutNum\": "+flowOutNum+",\n"
+//                                + "        \"groupId\": \"rrrr1111\",\n"
+//                                + "        \"groupName\": \"test\",\n"
+//                                + "        \"holdValue\": 5.0,\n"
+//                                + "        \"statTime\": \"2019-01-01T00:00:00+08:00\",\n"
+//                                + "        \"updateTime\": 1520111111\n"
+//                                + "      }");
+//            }else {
+//                builder.append("{\n"
+//                        + "        \"createTime\": 1520111111,\n"
+//                        + "        \"flowInNum\": "+flowInNum+",\n"
+//                        + "        \"flowOutNum\": "+flowOutNum+",\n"
+//                        + "        \"groupId\": \"rrrr1111\",\n"
+//                        + "        \"groupName\": \"test\",\n"
+//                        + "        \"holdValue\": 5.0,\n"
+//                        + "        \"statTime\": \"2019-01-01T00:00:00+08:00\",\n"
+//                        + "        \"updateTime\": 1520111111\n"
+//                        + "      },");
+//            }
+//
+//        }
+//        builder.append("],\n" +
+//                "    \"total\": 10\n" +
+//                "  },\n" +
+//                "  \"msg\": \"success\"\n" +
+//                "}");
 
+
+        int flowInRandNum =  RandomUtils.nextInt(0, 10);
+        int flowOutRandNum = RandomUtils.nextInt(0, 9);
+        flowInNum  += flowInRandNum;
+        flowOutNum += flowOutRandNum;
+        holdValue = (flowInNum - flowOutNum);
+
+        if(!(flowInNum >= flowOutNum && holdValue >=0)){
+            holdValue = (Math.abs(holdValue)+flowOutNum-flowInNum);
+            flowInNum  -= flowInRandNum;
+            flowOutNum -= flowOutRandNum;
         }
-        builder.append("],\n" +
-                "    \"total\": 10\n" +
-                "  },\n" +
-                "  \"msg\": \"success\"\n" +
-                "}");
 
-    return success(JSONObject.parseObject(builder.toString()));
+        String result =
+                    "{\n"
+                            + "\t\"code\": \"0\",\n"
+                            + "\t\"data\": {\n"
+                            + "\t\t\"flowInNum\": "+flowInNum+",\n"
+                            + "\t\t\"flowOutNum\": "+flowOutNum+",\n"
+                            + "\t\t\"groupId\": \"rrrr11111\",\n"
+                            + "\t\t\"holdValue\": "+holdValue+"\n"
+                            + "\t},\n"
+                            + "\t\"msg\": \"success\"\n"
+                            + "}";
+
+    log.info("result", result);
+    return JSONObject.parseObject(result);
     }
 
 

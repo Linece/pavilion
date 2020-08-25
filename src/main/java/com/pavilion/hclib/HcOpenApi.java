@@ -69,7 +69,7 @@ public class HcOpenApi {
            JSONObject jsonBody = new JSONObject();
            jsonBody.put("ids",groupId(host,appKey,appSecret,countGroupUrl));
            jsonBody.put("startTime",startTime);
-           jsonBody.put("startTime",endTime);
+           jsonBody.put("startTime",DateFormatUtils.format(new Date(), pattern));
            jsonBody.put("granularity","hourly");
            String body = jsonBody.toJSONString();
            result = ArtemisHttpUtil.doPostStringArtemis(path, body, null,
