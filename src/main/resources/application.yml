@@ -6,6 +6,12 @@ spring:
     url: jdbc:mysql://localhost:3306/test
     username: root
     password: root
+  freemarker:
+    template-loader-path: classpath:/templates
+    suffix: .html
+  thymeleaf:
+    check-template: false
+    check-template-location: false
 mybatis:
     type-aliases-package: com.pavilion.model
 logging:
@@ -20,3 +26,12 @@ hcws:
   password: 1
   ip: 1
   port: 1
+
+openApi:
+  host: 156.142.99.132:443
+  appKey: 23312358
+  appSecret: MIMhBI2K2OgyCZGKite5
+  cameraIndexCode: 49fd411e3e4247ebad8f09858478ac1f
+  allGroupUrl: /artemis/api/v2/passengerFlow/allGroup
+  groupsUrl: /artemis/api/v2/passengerFlow/allGroup
+  countGroupUrl: /artemis/api/v2/passengerFlow/allGroup

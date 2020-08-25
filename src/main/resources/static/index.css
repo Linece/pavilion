@@ -1,0 +1,345 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+.content {
+  width: 860px;
+  height: 1032px;
+  margin: 0 auto;
+  background-image: url(./images/bg1.png);
+  background-repeat: no-repeat;
+}
+.banner {
+  position: relative;
+  width: 100%;
+  height: 96px;
+}
+.companyLogo {
+  position: absolute;
+  left: 50px;
+  top: 25px;
+  width: 120px;
+  height: 21px;
+}
+.mainText {
+  text-align: center;
+  font-size: 30px;
+  padding-top: 50px;
+  color: #03bdff;
+}
+.bannerR {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+}
+.weatherLogo {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+.hot {
+  color: #03bdff;
+  font-size: 24px;
+  margin: 0 5px;
+}
+.time {
+  color: #03bdff;
+  font-size: 24px;
+  margin-right: 20px;
+}
+.timeDetail {
+  display: inline-block;
+  font-size: 12px;
+  color: #83bdff;
+}
+.year {
+}
+.week {
+}
+/* 左右两边 */
+.mainL {
+  position: absolute;
+  left: 50%;
+  margin-left: -439px;
+  top: 312px;
+  width: 161px;
+  height: 366px;
+  color: #83bdff;
+}
+.title {
+  text-align: center;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  /* Rotate div */
+  transform: rotate(7deg);
+  -ms-transform: rotate(7deg); /* Internet Explorer */
+  -moz-transform: rotate(7deg); /* Firefox */
+  -webkit-transform: rotate(7deg); /* Safari 和 Chrome */
+  -o-transform: rotate(7deg); /* Opera */
+}
+.mess {
+  font-size: 15px;
+  padding: 15px 2px 20px 25px;
+  /* Rotate div */
+  transform: rotate(2deg);
+  -ms-transform: rotate(2deg); /* Internet Explorer */
+  -moz-transform: rotate(2deg); /* Firefox */
+  -webkit-transform: rotate(2deg); /* Safari 和 Chrome */
+  -o-transform: rotate(2deg); /* Opera */
+}
+.circleP {
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: yellow;
+  display: inline-block;
+  margin-right: 6px;
+  margin-bottom: 2px;
+}
+.mainR {
+  position: absolute;
+  right: 50%;
+  margin-right: -453px;
+  top: 313px;
+  width: 205px;
+  height: 366px;
+  color: #83bdff;
+  text-align: CENTER;
+}
+.titleR {
+  text-align: center;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  /* Rotate div */
+  transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg); /* Internet Explorer */
+  -moz-transform: rotate(-3deg); /* Firefox */
+  -webkit-transform: rotate(-3deg); /* Safari 和 Chrome */
+  -o-transform: rotate(-3deg); /* Opera */
+}
+.bMess1 {
+  font-size: 15px;
+  margin-top: 18px;
+}
+.bStatistics {
+  font-size: 12px;
+  /* margin-top: 9px; */
+}
+.bNum1 {
+  /* display: inline-block; */
+  margin-top: 12px;
+}
+.bNum2 {
+  /* display: inline-block; */
+  margin-top: 12px;
+}
+.down {
+  text-align: center;
+  margin-top: 24px;
+}
+.titleR2 {
+  /* Rotate div */
+  transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg); /* Internet Explorer */
+  -moz-transform: rotate(-1deg); /* Firefox */
+  -webkit-transform: rotate(-1deg); /* Safari 和 Chrome */
+  -o-transform: rotate(-1deg); /* Opera */
+}
+.bMess2 {
+}
+.bNumber {
+  /* Rotate div */
+  transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg); /* Internet Explorer */
+  -moz-transform: rotate(-3deg); /* Firefox */
+  -webkit-transform: rotate(-3deg); /* Safari 和 Chrome */
+  -o-transform: rotate(-3deg); /* Opera */
+}
+.bNumber2 {
+  /* margin-top: 35px; */
+}
+.downNum {
+  display: block;
+  margin-top: 13px;
+}
+.downStatus {
+  display: block;
+  margin-top: 13px;
+}
+.status1 {
+  margin-top: 30px;
+  /* Rotate div */
+  transform: rotate(2deg);
+  -ms-transform: rotate(2deg); /* Internet Explorer */
+  -moz-transform: rotate(2deg); /* Firefox */
+  -webkit-transform: rotate(2deg); /* Safari 和 Chrome */
+  -o-transform: rotate(2deg); /* Opera */
+}
+.status2 {
+  margin-top: 16px;
+  /* Rotate div */
+  transform: rotate(3deg);
+  -ms-transform: rotate(3deg); /* Internet Explorer */
+  -moz-transform: rotate(3deg); /* Firefox */
+  -webkit-transform: rotate(3deg); /* Safari 和 Chrome */
+  -o-transform: rotate(3deg); /* Opera */
+}
+.bTotal {
+  font-size: 20px;
+}
+.bTotal1 {
+  font-size: 20px;
+}
+.bTotal2 {
+  font-size: 20px;
+}
+/* a馆数据展示 */
+.mainC {
+  position: relative;
+  width: 518px;
+  height: 578px;
+  margin: 0 auto;
+  margin-top: 108px;
+}
+.number {
+  position: absolute;
+  top: 52px;
+  left: 66px;
+  font-size: 21px;
+  color: #83bdff;
+}
+.now {
+  font-size: 45px;
+  /* color: red; */
+  font-style: italic;
+  text-align: center;
+  display: block;
+}
+.flowNumber {
+  position: absolute;
+  top: 40px;
+  right: 78px;
+  color: #83bdff;
+  font-size: 16px;
+  text-align: center;
+}
+.total1,
+.total2 {
+  display: block;
+  margin: 4px 0px;
+  font-style: italic;
+  font-size: 24px;
+}
+.num1 {
+}
+.num2 {
+}
+.status {
+  position: absolute;
+  top: 165px;
+  left: 47px;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  background: url(./images/1.png) 0 0 no-repeat;
+  background-size: cover;
+}
+.total {
+  position: absolute;
+  top: 210px;
+  right: 47px;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  background: url(./images/2.png) 0 0 no-repeat;
+  background-size: cover;
+}
+.statistics {
+  position: absolute;
+  bottom: 150px;
+  width: 445px;
+  height: 98px;
+  left: 41px;
+  background-color: #030e4d;
+}
+.main-weather {
+  position: absolute;
+  bottom: 25px;
+  width: 445px;
+  height: 98px;
+  left: 41px;
+  background-color: #030e4d;
+}
+.person1 {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+.pic {
+  font-size: 14px;
+  color: #fff;
+  float: left;
+  margin: 9px 20px;
+}
+.pic1 {
+  font-size: 14px;
+  color: #fff;
+  margin: 9px 20px;
+}
+.todays {
+  text-align: center;
+}
+.today {
+  color: #83bdff;
+  margin-right: 28px;
+}
+.type {
+  float: right;
+  margin: 9px 20px;
+  font-size: 10px;
+}
+.type li {
+  float: left;
+  list-style: none;
+}
+.typeColor {
+  color: #fff;
+  font-size: 10px;
+}
+.color {
+  width: 14px;
+  display: inline-block;
+  height: 5px;
+  margin: 0 10px;
+}
+.color1 {
+  background-color: #36dd32;
+}
+.color2 {
+  background-color: #ddb532;
+}
+.color3 {
+  background-color: #dd3232;
+}
+.person {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 9px;
+}
+.numberLogo {
+  overflow: hidden;
+  padding: 7px 10px 10px;
+}
+.numberLogo li {
+  list-style: none;
+  float: left;
+}
