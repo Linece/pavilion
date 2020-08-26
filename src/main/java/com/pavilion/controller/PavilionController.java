@@ -4,11 +4,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pavilion.common.BaseController;
 import com.pavilion.common.ResponseData;
-import com.pavilion.hclib.HcOpenApi;
+import com.pavilion.util.CommonUtil;
 import com.pavilion.util.HttpClientUtil;
 import com.pavilion.util.WeatherUtil;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,7 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Map;
 
 @RestController
@@ -101,6 +101,7 @@ public class PavilionController extends BaseController {
      */
     @GetMapping("/passengerFlowgroups/{type}")
     public JSONObject passengerFlowgroupsA(@PathVariable("type")String type){
+
         String result = null;
         int flowInRandNum =  RandomUtils.nextInt(0, 10);
         int flowOutRandNum = RandomUtils.nextInt(0, 9);
@@ -121,6 +122,8 @@ public class PavilionController extends BaseController {
                             + "\t\t\"flowInNum\": "+flowInNumA+",\n"
                             + "\t\t\"flowOutNum\": "+flowOutNumA+",\n"
                             + "\t\t\"groupId\": \"rrrr11111\",\n"
+                            + "\t\t\"date\": \""+LocalDateTime.now().getYear()+"年"+LocalDateTime.now().getMonth().getValue()+"月"+LocalDateTime.now().getDayOfMonth()+"日"+"\",\n"
+                            + "\t\t\"week\": \"星期"+CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue())+"\",\n"
                             + "\t\t\"holdValue\": "+holdValueA+"\n"
                             + "\t},\n"
                             + "\t\"msg\": \"success\"\n"
@@ -142,6 +145,8 @@ public class PavilionController extends BaseController {
                             + "\t\t\"flowInNum\": "+flowInNumB+",\n"
                             + "\t\t\"flowOutNum\": "+flowOutNumB+",\n"
                             + "\t\t\"groupId\": \"rrrr11111\",\n"
+                            + "\t\t\"date\": \""+LocalDateTime.now().getYear()+"年"+LocalDateTime.now().getMonth().getValue()+"月"+LocalDateTime.now().getDayOfMonth()+"日"+"\",\n"
+                            + "\t\t\"week\": \"星期"+CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue())+"\",\n"
                             + "\t\t\"holdValue\": "+holdValueB+"\n"
                             + "\t},\n"
                             + "\t\"msg\": \"success\"\n"
@@ -163,9 +168,8 @@ public class PavilionController extends BaseController {
     }
 
   public static void main(String[] args) {
-    int a = -6;
-    int b= 8;
-    int c = 2;
-    System.out.println(a+b-c);
+      Calendar calendar = Calendar.getInstance();
+      System.out.println();
+      System.out.println(CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue()));
   }
 }
