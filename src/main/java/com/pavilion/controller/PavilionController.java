@@ -110,7 +110,7 @@ public class PavilionController extends BaseController {
             holdValueA = (flowInNumA - flowOutNumA);
 
             if(!(flowInNumA >= flowOutNumA && holdValueA >=0)){
-                holdValueA = (Math.abs(holdValueA)+flowOutNumA-flowInNumA);
+                holdValueA = Math.abs(holdValueA)+flowInNumA-flowOutNumA;
                 flowInNumA  -= flowInRandNum;
                 flowOutNumA -= flowOutRandNum;
             }
@@ -131,7 +131,7 @@ public class PavilionController extends BaseController {
             holdValueB = (flowInNumB - flowOutNumB);
 
             if(!(flowInNumB >= flowOutNumB && holdValueB >=0)){
-                holdValueB = (Math.abs(holdValueB)+flowOutNumB-flowInNumB);
+                holdValueB = Math.abs(holdValueB)+flowInNumB-flowOutNumB;
                 flowInNumB  -= flowInRandNum;
                 flowOutNumB -= flowOutRandNum;
             }
@@ -163,6 +163,9 @@ public class PavilionController extends BaseController {
     }
 
   public static void main(String[] args) {
-    System.out.println(RandomUtils.nextInt(1, 100));
+    int a = -6;
+    int b= 8;
+    int c = 2;
+    System.out.println(a+b-c);
   }
 }
