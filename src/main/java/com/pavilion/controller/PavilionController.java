@@ -103,8 +103,8 @@ public class PavilionController extends BaseController {
     public JSONObject passengerFlowgroupsA(@PathVariable("type")String type){
 
         String result = null;
-        int flowInRandNum =  RandomUtils.nextInt(0, 10);
-        int flowOutRandNum = RandomUtils.nextInt(0, 9);
+        int flowInRandNum =  RandomUtils.nextInt(0, 10)*3;
+        int flowOutRandNum = RandomUtils.nextInt(0, 9)*3;
         if("1".equals(type)){
             flowInNumA  += flowInRandNum;
             flowOutNumA += flowOutRandNum;
@@ -115,19 +115,7 @@ public class PavilionController extends BaseController {
                 flowInNumA  -= flowInRandNum;
                 flowOutNumA -= flowOutRandNum;
             }
-            result =
-                    "{\n"
-                            + "\t\"code\": \"0\",\n"
-                            + "\t\"data\": {\n"
-                            + "\t\t\"flowInNum\": "+flowInNumA+",\n"
-                            + "\t\t\"flowOutNum\": "+flowOutNumA+",\n"
-                            + "\t\t\"groupId\": \"rrrr11111\",\n"
-                            + "\t\t\"date\": \""+LocalDateTime.now().getYear()+"年"+LocalDateTime.now().getMonth().getValue()+"月"+LocalDateTime.now().getDayOfMonth()+"日"+"\",\n"
-                            + "\t\t\"week\": \"星期"+CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue())+"\",\n"
-                            + "\t\t\"holdValue\": "+holdValueA+"\n"
-                            + "\t},\n"
-                            + "\t\"msg\": \"success\"\n"
-                            + "}";
+            result = getResult(flowInNumA,flowOutNumA,holdValueA);
         }else if("2".equals(type)){
             flowInNumB  += flowInRandNum;
             flowOutNumB += flowOutRandNum;
@@ -138,19 +126,7 @@ public class PavilionController extends BaseController {
                 flowInNumB  -= flowInRandNum;
                 flowOutNumB -= flowOutRandNum;
             }
-             result =
-                    "{\n"
-                            + "\t\"code\": \"0\",\n"
-                            + "\t\"data\": {\n"
-                            + "\t\t\"flowInNum\": "+flowInNumB+",\n"
-                            + "\t\t\"flowOutNum\": "+flowOutNumB+",\n"
-                            + "\t\t\"groupId\": \"rrrr11111\",\n"
-                            + "\t\t\"date\": \""+LocalDateTime.now().getYear()+"年"+LocalDateTime.now().getMonth().getValue()+"月"+LocalDateTime.now().getDayOfMonth()+"日"+"\",\n"
-                            + "\t\t\"week\": \"星期"+CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue())+"\",\n"
-                            + "\t\t\"holdValue\": "+holdValueB+"\n"
-                            + "\t},\n"
-                            + "\t\"msg\": \"success\"\n"
-                            + "}";
+             result = getResult(flowInNumB,flowOutNumB,holdValueB);
 
         }
     log.info("result", result);
@@ -171,5 +147,39 @@ public class PavilionController extends BaseController {
       Calendar calendar = Calendar.getInstance();
       System.out.println();
       System.out.println(CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue()));
+  }
+
+	/**
+	 * 初始化数据
+	 */
+	@GetMapping("/initData")
+	public void initStada(String type,int inNum,int outNum,int holdeValu){
+		if("1".equals(type)){
+			flowInNumA = inNum;
+			flowOutNumA= outNum;
+			holdValueA = holdeValu;
+		}else {
+			flowInNumB = inNum;
+			flowOutNumB= outNum;
+			holdValueB = holdeValu;
+		}
+
+  }
+
+  public String getResult(int inNUm,int outNum,int holValue){
+	  String result =
+			  "{\n"
+					  + "\t\"code\": \"0\",\n"
+					  + "\t\"data\": {\n"
+					  + "\t\t\"flowInNum\": "+inNUm+",\n"
+					  + "\t\t\"flowOutNum\": "+outNum+",\n"
+					  + "\t\t\"groupId\": \"rrrr11111\",\n"
+					  + "\t\t\"date\": \""+LocalDateTime.now().getYear()+"年"+LocalDateTime.now().getMonth().getValue()+"月"+LocalDateTime.now().getDayOfMonth()+"日"+"\",\n"
+					  + "\t\t\"week\": \"星期"+CommonUtil.arabicNumToChineseNum(LocalDateTime.now().getDayOfWeek().getValue())+"\",\n"
+					  + "\t\t\"holdValue\": "+holValue+"\n"
+					  + "\t},\n"
+					  + "\t\"msg\": \"success\"\n"
+					  + "}";
+	  return result;
   }
 }
