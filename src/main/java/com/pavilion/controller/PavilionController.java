@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pavilion.common.BaseController;
 import com.pavilion.common.ResponseData;
+import com.pavilion.hclib.HcOpenApi;
 import com.pavilion.util.CommonUtil;
 import com.pavilion.util.HttpClientUtil;
 import com.pavilion.util.WeatherUtil;
@@ -115,7 +116,7 @@ public class PavilionController extends BaseController {
                 flowInNumA  -= flowInRandNum;
                 flowOutNumA -= flowOutRandNum;
             }
-            result = getResult(flowInNumA,flowOutNumA,holdValueA);
+            result = getResult(0,0,0);
         }else if("2".equals(type)){
             flowInNumB  += flowInRandNum;
             flowOutNumB += flowOutRandNum;
@@ -130,6 +131,7 @@ public class PavilionController extends BaseController {
 
         }
     log.info("result", result);
+	    HcOpenApi.byStartAndEnd(host, appKey, appSecret, groupsUrl, countGroupUrl);
     return JSONObject.parseObject(result);
     }
 
@@ -181,5 +183,15 @@ public class PavilionController extends BaseController {
 					  + "\t\"msg\": \"success\"\n"
 					  + "}";
 	  return result;
+  }
+
+  @GetMapping("/aa")
+  public void aa(){
+		log.info("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
+		try{
+			int aa = 1/0;
+		}catch (Exception e){
+			log.error("RRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+		}
   }
 }

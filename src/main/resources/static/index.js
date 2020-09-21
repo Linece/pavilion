@@ -176,7 +176,7 @@ $(document).ready(function () {
     }
     /** 人数拥挤程度统计规则结束 **/
     setInterval(function () { getWeatherData(); }, 3600000);
-    setInterval(function () { getPersonData(); }, 60000);
+    setInterval(function () { getPersonData(); }, 10000);
     function getWeatherData(params) {
         $.ajax({
             //请求方式

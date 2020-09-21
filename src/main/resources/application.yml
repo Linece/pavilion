@@ -14,12 +14,14 @@ spring:
     check-template-location: false
 mybatis:
     type-aliases-package: com.pavilion.model
+#如果将日志设置在某个等级，则比此级别高的都能打印出来。比如，设置了INFO，那么ERROR, WARN等都能输出打印了，而DEBUG、TRACE等就被忽略了
+#日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
 logging:
   file:
     #path:
     name: D:\\log\\log.log
-  #level:
-    #root: error
+  level:
+    root: info
 
 hcws:
   name: 1
@@ -32,6 +34,6 @@ openApi:
   appKey: 23312358
   appSecret: MIMhBI2K2OgyCZGKite5
   cameraIndexCode: 49fd411e3e4247ebad8f09858478ac1f
-  allGroupUrl: /artemis/api/v2/passengerFlow/allGroup
-  groupsUrl: /artemis/api/v2/passengerFlow/allGroup
-  countGroupUrl: /artemis/api/v2/passengerFlow/allGroup
+  allGroupUrl: /artemis/api/v2/passengerFlow/allGroup  #根据时间及时间维度查询双目客流统计数据
+  groupsUrl: /artemis/api/v2/passengerFlow/groups    #查询时间范围内的多个统计组的客流统计数据
+  countGroupUrl: /artemis/api/v2/countGroup/groups/page
