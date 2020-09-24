@@ -21,7 +21,7 @@ logging:
     #path:
     name: D:\\log\\log.log
   level:
-    root: info
+    root: error
 
 hcws:
   name: 1
@@ -30,10 +30,11 @@ hcws:
   port: 1
 
 openApi:
-  host: 156.142.99.132:443
-  appKey: 23312358
-  appSecret: MIMhBI2K2OgyCZGKite5
+  host: 192.168.1.1:443
+  appKey: 20161965
+  appSecret: cAaawg7ZoZKXgNvbvWTK
   cameraIndexCode: 49fd411e3e4247ebad8f09858478ac1f
   allGroupUrl: /artemis/api/v2/passengerFlow/allGroup  #根据时间及时间维度查询双目客流统计数据
-  groupsUrl: /artemis/api/v2/passengerFlow/groups    #查询时间范围内的多个统计组的客流统计数据
-  countGroupUrl: /artemis/api/v2/countGroup/groups/page
+  groupsUrl: /artemis/api/cfas/v2/passengerFlow/groups    #查询时间范围内的多个统计组的客流统计数据
+  groupsUrlBak: /api/v2/passengerFlow/groups    #查询时间范围内的多个统计组的客流统计数据
+  countGroupUrl: /artemis/api/cfas/v1/config/countGroup/list
