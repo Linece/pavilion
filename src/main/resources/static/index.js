@@ -15,8 +15,23 @@ $(document).ready(function () {
         $(".mess").html('B馆总建筑面积为8572平方米，共分三层。首层布置入口门厅和农产品创意展厅，首层建筑面积为3828平方米；二层布置农产品科普展厅和农产品教育展厅，二层建筑面积为2140平方米；三层布置农产品体验区和一个多功能厅，三层建筑面积为2604平方米。')
     }
     // $(".collectType").html(text);
+    let timeMap=['日','一','二','三','四','五','六']
     console.log("coll", collection)
     console.log(window.location);
+    setInterval(function(){
+        var localData = new Date();
+        var year = localData.getFullYear(); //获取当前年份
+        var mon = localData.getMonth() + 1; //获取当前月份
+        var day = localData.getDate(); //获取当前日
+        var days=localData.getDay(); //获取当前星期几
+        var h = localData.getHours(); //获取小时
+        var m = localData.getMinutes(); //获取分钟
+        var s = localData.getSeconds(); //获取秒
+        const week=timeMap[days]
+        const time = `${year}-${mon}-${day} ${h}:${m}:${s}`
+        $(".time").html(time);
+        $(".week").html(`星期${week}`);
+    }, 1000);
     //天气
     const weather = {
         height: 30,
@@ -182,8 +197,7 @@ $(document).ready(function () {
             //请求方式
             type: 'GET',
             //发送请求的地址
-            //url: './getWeather',
-            url: 'http://wthrcdn.etouch.cn/weather_mini?city=怀仁',
+            url: './getWeather',
             //服务器返回的数据类型
             // crossDomain: true,
             dataType: 'json',
@@ -192,11 +206,12 @@ $(document).ready(function () {
             success: function (res) {
                 console.log("------------data", res);
                 //请求成功函数内容
-                const result = res.data.forecast[0];
+                const result = res.data.data.forecast[0];
                 // 天气数据
                 $(".hotH").html(result.high.split(" ")[1]);
                 $(".hotL").html(result.low.split(" ")[1]);
                 $(".hotD").html(result.type);
+
             },
             error: function (jqXHR) {
                 //请求失败函数内容
@@ -239,9 +254,8 @@ $(document).ready(function () {
                     $(".bTotal").html(result.holdValue);
                     $(".statusData").html(mapTitle[personTotalLogo.type]);
                 }
-                //请求服务器日期数据
-                $(".time").html(result.date);
-                $(".week").html(result.week);
+
+                //请求成功函数内容
             },
             error: function (jqXHR) {
                 //请求失败函数内容

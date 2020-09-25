@@ -170,6 +170,7 @@ public class HcOpenApi {
 
   public static void main(String[] args) throws ParseException {
 		System.out.println(DateFormatUtils.format(DateUtils.strToDate(DateUtils.DateToStr(new Date(),formate1)+" 00:00:00",formate2), pattern));
+		System.out.println(DateFormatUtils.format(new Date(), pattern));
 
   }
 

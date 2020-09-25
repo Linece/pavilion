@@ -13,6 +13,7 @@ import com.pavilion.util.WeatherUtil;
 import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +47,15 @@ public class PavilionController extends BaseController {
 
     @Value("${openApi.cameraIndexCode}")
     private String cameraIndexCode;
+
+	static int flowInNumA = 0;
+	static int flowOutNumA = 0;
+	static int holdValueA = 0;
+
+	static int flowInNumB = 0;
+	static int flowOutNumB = 0;
+	static int holdValueB = 0;
+
     /**
      * 天气接口
      * @return
@@ -85,6 +95,34 @@ public class PavilionController extends BaseController {
 		    }
 		  holValue = inNUm -outNum;
     return JSONObject.parseObject( getResult(inNUm,outNum,holValue));
+//	    String result = null;
+//	    int flowInRandNum =  RandomUtils.nextInt(0, 10)*3;
+//	    int flowOutRandNum = RandomUtils.nextInt(0, 9)*3;
+//	    if("1".equals(type)){
+//		    flowInNumA  += flowInRandNum;
+//		    flowOutNumA += flowOutRandNum;
+//		    holdValueA = (flowInNumA - flowOutNumA);
+//
+//		    if(!(flowInNumA >= flowOutNumA && holdValueA >=0)){
+//			    holdValueA = Math.abs(holdValueA)+flowInNumA-flowOutNumA;
+//			    flowInNumA  -= flowInRandNum;
+//			    flowOutNumA -= flowOutRandNum;
+//		    }
+//		    result = getResult(flowInNumA,flowOutNumA,holdValueA);
+//	    }else if("2".equals(type)){
+//		    flowInNumB  += flowInRandNum;
+//		    flowOutNumB += flowOutRandNum;
+//		    holdValueB = (flowInNumB - flowOutNumB);
+//
+//		    if(!(flowInNumB >= flowOutNumB && holdValueB >=0)){
+//			    holdValueB = Math.abs(holdValueB)+flowInNumB-flowOutNumB;
+//			    flowInNumB  -= flowInRandNum;
+//			    flowOutNumB -= flowOutRandNum;
+//		    }
+//		    result = getResult(flowInNumB,flowOutNumB,holdValueB);
+//
+//	    }
+	   // return JSONObject.parseObject(result);
     }
 
   public static String getResult(int inNUm,int outNum,int holValue){
@@ -102,5 +140,10 @@ public class PavilionController extends BaseController {
 					  + "\t\"msg\": \"success\"\n"
 					  + "}";
 	  return result;
+  }
+
+  public static void main(String[] args) {
+	  log.info("sd{}","111");
+	  log.error("sd:{}", "sdf");
   }
 }
